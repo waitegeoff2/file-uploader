@@ -13,3 +13,24 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+// ADD USERS TABLE HERE
+
+model User {
+  id        Int      @id @default(autoincrement())
+  fullname  String   @db.VarChar(255)
+  // unique means that no two can be the same
+  username  String   @unique
+  password  String   @db.VarChar(255)
+  
+}
+
+// const SQL = `
+// CREATE TABLE IF NOT EXISTS users (
+//    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+//    fullname VARCHAR ( 255 ),
+//    username VARCHAR ( 255 ),
+//    password VARCHAR ( 255 ),
+//    membership VARCHAR ( 255 ),
+//    is_admin BOOLEAN DEFAULT FALSE
+// );

@@ -25,3 +25,39 @@ const validateUser = [
             return true;
         }),
 ]
+
+const addUser = [
+validateUser,
+async(req, res, next) => {
+//display errors if any
+const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      return res.status(400).render("sign-up-form", {
+        errors: errors.array(),
+      });
+    }
+
+//if valid, put values into db
+try {
+    const user = req.body;
+    const fullName = req.body.fullname;
+    const userName = req.body.username;
+    let admin;
+    if(req.body.admin == 'yes') {
+        admin = "true";
+    } else {
+        admin = "false";
+    }
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    await db.addUser(fullName, userName, hashedPassword, admin);
+    res.render('join', { userName: userName })
+} catch(error){
+    console.error(error);
+    next(error);
+}
+}
+]
+
+module.exports = {
+    addUser
+}
