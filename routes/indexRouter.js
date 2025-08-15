@@ -19,14 +19,14 @@ indexRouter.post(
     failureRedirect: "/"
   })
 );
-// //log out (passport adds a logout function to the req object)
-// indexRouter.get("/log-out", (req, res, next) => {
-//   req.logout((err) => {
-//     if (err) {
-//       return next(err);
-//     }
-//     res.redirect("/");
-//   });
-// });
+//log out (passport adds a logout function to the req object)
+indexRouter.get("/log-out", (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+});
 
 module.exports = indexRouter;
