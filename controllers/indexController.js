@@ -47,6 +47,7 @@ try {
     
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     await db.addUser(fullName, userName, hashedPassword);
+    res.redirect('/');
 } catch(error){
     console.error(error);
     next(error);
