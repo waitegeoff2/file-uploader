@@ -10,23 +10,21 @@ const bcrypt = require("bcryptjs");
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
-        //rewrite in prisma
+        //find user details
         const user = await prisma.user.findFirst({
         where: {
             username: username,
         },
         });
         console.log(user)
-    //   const { rows } = await pool.query("SELECT * FROM users WHERE username = $1", [username]);
-    //   const user = rows[0];
-
+        //if user not in database
         if (!user) {
             console.log('no user');
             return done(null, false, { message: "Incorrect username" });
-        }   
+        }  
+        //define match 
         const match = await bcrypt.compare(password, user.password);
         if (!match) {
-            // passwords do not match!
             console.log("wrong password!")
             return done(null, false, { message: "Incorrect password" })
         }
@@ -48,7 +46,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await prisma.user.findUnique({
+    const user = await prisma.user.findFirst({
     where: {
         id: id,
     },

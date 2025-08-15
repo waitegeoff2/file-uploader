@@ -20,3 +20,10 @@ model User {
   password  String   @db.VarChar(255)
   
 }
+
+model Session {
+  id        String   @id
+  sid       String   @unique
+  data      String    // MediumText may be needed for MySql
+  expiresAt   DateTime
+}
