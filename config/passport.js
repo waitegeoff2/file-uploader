@@ -1,10 +1,12 @@
+//putting all the passport stuff here and then making it available in the app
 const passport = require("passport");
+//import your prisma client into here
 const prisma = require("../db/prisma");
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require("bcryptjs");
 
 //PASSPORT PASSWORD/COOKIE FUNCTIONS (UPDATE)
-//match un and pw
+//passport middleware - match un and pw
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
