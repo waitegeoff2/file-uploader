@@ -13,15 +13,7 @@ const prisma = require('./db/prisma')
 
 //multer
 const multer  = require('multer')
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, '/uploads')
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname)
-  }
-})
-const upload = multer({ storage })
+const upload = multer({ dest: 'uploads/' })
 
 //multer middleware for single upload
 app.post('/upload', upload.single('file'), (req,res) => {

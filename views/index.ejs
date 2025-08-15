@@ -13,7 +13,7 @@
 <% if (currentUser) {%>
     <div class="file-option">
         <h1><%= currentUser.fullname %>'s file uploader</h1>
-        <form action="/upload" class="file-uploader-form" method="POST">
+        <form action="/upload" class="file-uploader-form" method="POST" enctype="multipart/form-data">
             <label for="file">Upload file</label>
             <input id="file" name="file" type="file" />
             <input type="submit" value="Upload File">
