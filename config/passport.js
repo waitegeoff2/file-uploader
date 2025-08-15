@@ -10,6 +10,12 @@ const bcrypt = require("bcryptjs");
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
+        //rewrite in prisma
+                // const user = await prisma.user.findUnique({
+                // where: {
+                //     username: username,
+                // },
+                // });
       const { rows } = await pool.query("SELECT * FROM users WHERE username = $1", [username]);
       const user = rows[0];
       const match = await bcrypt.compare(password, user.password);

@@ -3,22 +3,20 @@
 const { PrismaClient } = require('../generated/prisma')
 const prisma = new PrismaClient();
 
-async function main() {
-    const allUsers = await prisma.user.findMany()
-  console.log(allUsers)
-}
+// async function main() {
+//     const allUsers = await prisma.user.findMany()
+//   console.log(allUsers)
+// }
 
-main()
-  .then(async () => {
-    await prisma.$disconnect()
-  })
-  .catch(async (e) => {
-    console.error(e)
-    await prisma.$disconnect()
-    process.exit(1)
-  })
+// main()
+//   .then(async () => {
+//     await prisma.$disconnect()
+//   })
+//   .catch(async (e) => {
+//     console.error(e)
+//     await prisma.$disconnect()
+//     process.exit(1)
+//   })
 
-// module.exports = prisma;
-
-//THEN IMPORT THAT INTO THE QUERIES
-//DOUBLE CHECK THIS WITH THE INTRO TO PRISMA PAGE
+// exporting the prisma client to be used elsewhere
+module.exports = prisma;
