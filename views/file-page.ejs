@@ -9,6 +9,7 @@
 <body>
 <%= console.trace(currentUser.fullname) %>
 <%- include("partials/add-folder-modal.ejs") %>
+<%- include("partials/add-file-modal.ejs") %>
 <% if (currentUser) {%>
     <div class="top-bar">
             <h1><%= currentUser.fullname %>'s file uploader</h1>

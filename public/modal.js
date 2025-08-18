@@ -15,7 +15,7 @@ newFileBtn.addEventListener('click', () => {
 
 closeBtn.onclick = function() {
     modal.style.display = "none";
-    fileModal.style.display = 'none';
+    fileModal.style.display = "none";
 }
 
 //click outside modal, it closes
