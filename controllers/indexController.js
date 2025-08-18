@@ -78,8 +78,14 @@ async function addFolder(req, res) {
         res.redirect('/file-page');
 }
 
+async function expandFolder(req, res) {
+    const folderId = req.params;
+    console.trace(folderId)
+}
+
 module.exports = {
     addUser,
     renderFilePage,
-    addFolder
+    addFolder, 
+    expandFolder
 }

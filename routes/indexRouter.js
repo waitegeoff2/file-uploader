@@ -37,6 +37,12 @@ indexRouter.get('/file-page', indexController.renderFilePage)
 indexRouter.post('/folder', indexController.addFolder)
 //THEN display it in the index (map same as messages)
 
+//show folder details
+indexRouter.get('/folder/:folderId', indexController.expandFolder)
+
+//delete folder
+//indexRouter.get('/folder/:folderId', indexController.deleteFolder)
+
 //OR
 //go to param URL with user's id for new form (maybe won't work with multiple)
 //indexRouter.get('folder/:folderId', indexController.addFolder)

@@ -21,15 +21,11 @@
                 <button class="new-folder-btn">New folder</button>
                 <button class="new-file-btn">New file</button>
             </div>
-            <!-- <form action="/upload" class="file-uploader-form" method="POST" enctype="multipart/form-data">
-                <label for="file">Upload file</label>
-                <input id="file" name="file" type="file" />
-                <input type="submit" value="Upload File">
-            </form> -->
         </div>
         <div class="folders-list">
             <% folders.forEach((folder) => { %>
-                <button class="folder-btn"><%= folder.name %></button>
+                <!-- now when you click it, it has a param you can use to look up info -->
+                <a href="/folder/<%= folder.id %>" class="folder-btn"><%= folder.name %></a>
             <% }) %>
         </div>
             

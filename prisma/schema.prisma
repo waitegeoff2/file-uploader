@@ -36,6 +36,8 @@ model File {
   folder      Folder    @relation(fields: [folderId], references: [id])
   folderId    Int
 
+  //ADD A USER RELATION IN HERE?? EACH FILE BELONGS TO A USER
+
   name        String
   fileSize    Int
   uploadTime  DateTime  @default(now()) 
