@@ -11,9 +11,6 @@ const validateUser = [
     body("fullname").trim()
     .notEmpty().withMessage(`Full name ${emptyErr}`)
     .isLength({ min: 1, max: 50 }).withMessage(`Full name ${lengthErr}`),
-    body("folderName").trim()
-    .notEmpty().withMessage(`Full name ${emptyErr}`)
-    .isLength({ min: 1, max: 50 }).withMessage(`Full name ${lengthErr}`),
     body("username").trim()
     .isLength({ min: 1, max: 50 }).withMessage(`Full name ${lengthErr}`)
     .isEmail().withMessage(`Email ${emailErr}`), 
@@ -50,6 +47,9 @@ async(req, res, next) => {
         
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         await db.addUser(fullName, userName, hashedPassword);
+
+        await db.addDefaultFolder();
+
         res.redirect('/');
     } catch(error){
         console.error(error);
@@ -59,12 +59,12 @@ async(req, res, next) => {
 ]
 
 async function addFolder(req, res) {
-            const folderName = req.body.folderName;
-            const user = req.body.userInfo;
-            const userId = parseInt(user);
-            console.log(folderName, userId)
-            await db.addFolder(folderName, userId);
-            res.redirect('/file-page');
+        const folderName = req.body.folderName;
+        const user = req.body.userInfo;
+        const userId = parseInt(user);
+
+        await db.addFolder(folderName, userId);
+        res.redirect('/file-page');
 }
 
 module.exports = {
