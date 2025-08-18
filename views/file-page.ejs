@@ -4,11 +4,12 @@
   <meta charset="UTF-8">
   <title>File Uploader</title>
   <link rel="stylesheet" href="/styles.css">
-  <script src="/public/btns.js" defer></script>
+  <script src="/modal.js" defer></script>
 </head>
 <body>
     <h2>file page</h2>
 <%= console.trace(currentUser) %>
+<%- include("partials/add-folder-modal.ejs") %>
 <% if (currentUser) {%>
     <div class="file-option">
         <h1><%= currentUser.fullname %>'s file uploader</h1>
