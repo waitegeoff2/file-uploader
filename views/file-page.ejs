@@ -10,22 +10,27 @@
 <%= console.trace(currentUser.fullname) %>
 <%- include("partials/add-folder-modal.ejs") %>
 <% if (currentUser) {%>
+    <div class="top-bar">
+            <h1><%= currentUser.fullname %>'s file uploader</h1>
+            <a href="/log-out">Log out</a>
+    </div>
     <div class="file-option">
-        <h1><%= currentUser.fullname %>'s file uploader</h1>
-            <div class="folder-page-options">
-                <div class="folder-options">
-                    <button class="new-folder-btn">New folder</button>
-                    <a href="/log-out">Log out</a>
-                </div>
-                <form action="/upload" class="file-uploader-form" method="POST" enctype="multipart/form-data">
-                    <label for="file">Upload file</label>
-                    <input id="file" name="file" type="file" />
-                    <input type="submit" value="Upload File">
-                </form>
+        <div class="folder-page-options">
+            <div class="folder-options">
+                <button class="new-folder-btn">New folder</button>
+                <button class="new-file-btn">New file</button>
+            </div>
+            <!-- <form action="/upload" class="file-uploader-form" method="POST" enctype="multipart/form-data">
+                <label for="file">Upload file</label>
+                <input id="file" name="file" type="file" />
+                <input type="submit" value="Upload File">
+            </form> -->
+        </div>
+        <div class="folders-list">
             <% folders.forEach((folder) => { %>
                 <button class="folder-btn"><%= folder.name %></button>
             <% }) %>
-            </div>
+        </div>
             
     </div>
 <% } %>

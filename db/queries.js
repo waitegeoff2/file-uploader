@@ -30,7 +30,7 @@ async function addDefaultFolder() {
     await prisma.folder.create({
         data: {
             userId: userId.id,
-            name: `Default folder for ${userId.fullname}`
+            name: `${userId.fullname}'s folder.`
         }
     })
 
