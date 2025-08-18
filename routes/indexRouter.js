@@ -15,7 +15,7 @@ indexRouter.get('/log-in', (req, res) => res.render('log-in-form'))
 indexRouter.post(
       "/log-in",
   passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/file-page",
     failureRedirect: "/"
   })
 );
@@ -28,5 +28,20 @@ indexRouter.get("/log-out", (req, res, next) => {
     res.redirect("/");
   });
 });
+
+//file management page
+indexRouter.get('/file-page', (req, res) => res.render('file-page'))
+
+//create folder 
+//take user to new folder form, make a new form and tie it to that user's id
+//indexRouter.get('folder/, render(folderform))
+//indexrouter.post('folder', controller.addfolder)
+//THEN display it in the index (map same as messages)
+
+//OR
+//go to param URL with user's id for new form (maybe won't work with multiple)
+//indexRouter.get('folder/:folderId', indexController.addFolder)
+//that folder id is the USER ID and can add a folder to that guy's id
+
 
 module.exports = indexRouter;
