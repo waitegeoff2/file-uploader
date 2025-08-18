@@ -58,6 +58,17 @@ async(req, res, next) => {
 }
 ]
 
+async function renderFilePage(req, res) {
+    console.trace(req.session)
+    const current = req.session.passport.user;
+    console.log(current)
+    const folders = await db.findFolders(current)
+
+    console.trace(folders)
+
+    res.render("file-page", {folders: folders})
+}
+
 async function addFolder(req, res) {
         const folderName = req.body.folderName;
         const user = req.body.userInfo;
@@ -69,5 +80,6 @@ async function addFolder(req, res) {
 
 module.exports = {
     addUser,
+    renderFilePage,
     addFolder
 }

@@ -7,7 +7,7 @@
   <script src="/modal.js" defer></script>
 </head>
 <body>
-<%= console.trace(currentUser) %>
+<%= console.trace(currentUser.fullname) %>
 <%- include("partials/add-folder-modal.ejs") %>
 <% if (currentUser) {%>
     <div class="file-option">
@@ -22,8 +22,11 @@
                     <input id="file" name="file" type="file" />
                     <input type="submit" value="Upload File">
                 </form>
-                <!-- ADD/displays user.FOLDERs (same as messages) -->
+            <% folders.forEach((folder) => { %>
+                <button class="folder-btn"><%= folder.name %></button>
+            <% }) %>
             </div>
+            
     </div>
 <% } %>
   

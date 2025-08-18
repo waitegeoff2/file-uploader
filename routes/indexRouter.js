@@ -30,7 +30,7 @@ indexRouter.get("/log-out", (req, res, next) => {
 });
 
 //file management page
-indexRouter.get('/file-page', (req, res) => res.render('file-page'))
+indexRouter.get('/file-page', indexController.renderFilePage)
 
 //create folder 
 //take user to new folder form, make a new form and tie it to that user's id

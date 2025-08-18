@@ -10,6 +10,16 @@ async function addUser(fullName, userName, password) {
     })
 }
 
+async function findFolders(userId) {
+    const folders = await prisma.folder.findMany({
+        where: {
+            userId: userId,
+        }
+    })
+
+    return folders;
+}
+
 async function addDefaultFolder() {
     const userId = await prisma.user.findFirst({
         orderBy: {
@@ -38,6 +48,7 @@ async function addFolder(folderName, user) {
 
 module.exports = {
     addUser,
+    findFolders,
     addDefaultFolder,
     addFolder
 }
