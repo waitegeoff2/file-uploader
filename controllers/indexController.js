@@ -79,8 +79,12 @@ async function addFolder(req, res) {
 }
 
 async function expandFolder(req, res) {
-    const folderId = req.params;
+    const folderId = req.params.folderId;
     console.trace(folderId)
+    //add db to look up FILES based on folder ID and 
+    //add a DELETE BUTTON WITH THAT ID
+    res.end()
+    //res.render('folderDetails'{ folderId: folderId, files: files })
 }
 
 module.exports = {
