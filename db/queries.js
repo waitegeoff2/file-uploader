@@ -10,6 +10,16 @@ async function addUser(fullName, userName, password) {
     })
 }
 
+async function addFolder(folderName, user) {
+    await prisma.folder.create({
+        data: {
+            userId: user,
+            name: folderName
+        }
+    })
+}
+
 module.exports = {
     addUser,
+    addFolder
 }

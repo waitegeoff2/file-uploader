@@ -34,8 +34,7 @@ indexRouter.get('/file-page', (req, res) => res.render('file-page'))
 
 //create folder 
 //take user to new folder form, make a new form and tie it to that user's id
-//indexRouter.get('folder/, render(folderform))
-//indexrouter.post('folder', controller.addfolder)
+indexRouter.post('/folder', indexController.addFolder)
 //THEN display it in the index (map same as messages)
 
 //OR

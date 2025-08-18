@@ -1,18 +1,16 @@
 <body>
   <div class="modal">
     <div class="modal-content">
-        <h2>Add folder</h2>
+        <div class="modal-top">
+            <h2>Add folder</h2>
+            <button class="close-btn">X</button>
+        </div>
         <form class="new-folder-form" action="/folder" method="POST">
-            <!-- <label for="username">Username</label>
-            <input id="username" name="username" placeholder="Your email" type="text" />
-            <label for="password">Password</label>
-            <input id="password" name="password" type="password" />
+            <label for="folderName">Folder name</label>
+            <input type="text" id="folderName" name="folderName" required/>
             <input type="hidden" name="userInfo" value="<%= currentUser.id %>">
-            <button type="submit">Log In</button> -->
-            <!-- put the hidden value in there to tie the folder to the user id who is
-            currently signed in -->
+            <button type="submit">Create folder</button>
         </form>
-        <button class="close-btn">X</button>
     </div>
   </div>
 </body>
