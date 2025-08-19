@@ -41,14 +41,15 @@ indexRouter.get('/folder/:folderId', indexController.expandFolder)
 
 //upload file
 indexRouter.post('/upload', upload.single('file'), async (req,res) => {
-    console.log(req.file);
+    console.trace(req.file);
+    console.trace(req.body);
     const name = req.file.fieldname;
     const type = req.file.mimetype;
     const filename = req.file.filename;
     const size = req.file.size;
     const path = req.file.path;
     //add to db
-    await db.addFile()
+    // await db.addFile()
     res.send(req.file);
 })
 
