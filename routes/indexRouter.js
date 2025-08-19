@@ -42,7 +42,7 @@ indexRouter.get('/folder/:folderId', indexController.expandFolder)
 //upload file
 indexRouter.post('/upload', upload.single('file'), async (req,res) => {
     console.trace(req.file);
-    console.trace(req.body);
+    console.trace(req.body.folderid);
     const name = req.file.fieldname;
     const type = req.file.mimetype;
     const filename = req.file.filename;
