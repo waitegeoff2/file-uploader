@@ -29,10 +29,10 @@
             </div>
             <div class="folder-box">
                 <div class="folders-list">
-                    <% files.forEach((file) => { %>
+                    <% returnedFiles.files.forEach((file) => { %>
                         <!-- now when you click it, it has a param you can use to look up info -->
                         <a class="folder" href="/folder/<%= file.id %>" >
-                            <img class="folder-icon" src="/images/file.svg" alt="Stock image of a folder">
+                            <img class="file-icon" src="/images/file.svg" alt="Stock image of a folder">
                             <span class="folder-name"><%= file.name %></span>
                         </a> 
                     <% }) %>

@@ -249,3 +249,8 @@ button:active {
     font-size: 20px;
 }
 
+.file-icon {
+    height: 90px;
+    width: auto;
+}
+

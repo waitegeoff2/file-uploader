@@ -82,11 +82,13 @@ async function expandFolder(req, res) {
     const folderId = req.params.folderId;
     console.trace(folderId)
     const files = await db.findFiles(folderId)
+    console.trace(files)
     const returnedFiles = files[0];
-    console.log(returnedFiles)
+    
+    console.trace(returnedFiles.files)
     //add db to look up FILES based on folder ID and 
     //add a DELETE BUTTON WITH THAT ID
-    res.render('folder-details', { files: files, folderId: folderId })
+    res.render('folder-details', { returnedFiles: returnedFiles, folderId: folderId })
     //res.render('folder-details'{ folderId: folderId, files: files })
 }
 
