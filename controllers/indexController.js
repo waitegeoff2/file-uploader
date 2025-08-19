@@ -87,9 +87,24 @@ async function expandFolder(req, res) {
     res.render('folder-details', { returnedFiles: returnedFiles, folderId: folderId })
 }
 
+async function addFile (req, res) {
+    console.trace(req.file);
+    console.trace(req.body.folderid);
+    const id = req.body.folderid;
+    const name = req.file.fieldname;
+    
+    const filename = req.file.filename;
+    const size = req.file.size;
+    const path = req.file.path;
+    //add to db
+    await db.addFile(id, name, size, path)
+    res.end()
+}
+
 module.exports = {
     addUser,
     renderFilePage,
     addFolder, 
+    addFile,
     expandFolder
 }
