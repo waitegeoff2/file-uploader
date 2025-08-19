@@ -244,3 +244,8 @@ button:active {
     justify-content: space-between;
 }
 
+.back-to-folders {
+    font-weight: bold;
+    font-size: 20px;
+}
+

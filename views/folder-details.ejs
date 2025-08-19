@@ -14,10 +14,11 @@
 <%= console.trace(currentUser.fullname) %>
 <%- include("partials/add-folder-modal.ejs") %>
 <%- include("partials/add-file-modal.ejs") %>
+
 <% if (currentUser) {%>
     <div class="top-bar">
-            <div class="empty"></div>
-                <h1><%= currentUser.fullname %>'s Files</h1>
+            <a class="back-to-folders" href="/file-page">Back</a>
+            <h1><%= currentUser.fullname %>'s Files</h1>
             <a class="log-out-file" href="/log-out">Log out</a>
     </div>
     <div class="file-page">
@@ -28,7 +29,13 @@
             </div>
             <div class="folder-box">
                 <div class="folders-list">
-                    <!-- files.foreach -->
+                    <% files.forEach((file) => { %>
+                        <!-- now when you click it, it has a param you can use to look up info -->
+                        <a class="folder" href="/folder/<%= file.id %>" >
+                            <img class="folder-icon" src="/images/file.svg" alt="Stock image of a folder">
+                            <span class="folder-name"><%= file.name %></span>
+                        </a> 
+                    <% }) %>
                 </div>
             </div>
         </div>        

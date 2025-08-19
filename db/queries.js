@@ -57,13 +57,19 @@ async function addFile(folderId, name, size) {
 }
 
 async function findFiles(folderId) {
+    const foldId = parseInt(folderId)
     const files = await prisma.folder.findMany({
         where: {
-            id: folderId,
+            id: foldId,
+        },
+        select: {
             files: {
-                name: true,
-                fileSize: true,
-                uploadTime: true
+                select: {
+                    id: true,
+                    name: true,
+                    fileSize: true,
+                    uploadTime: true
+                }
             }
         }
     })
