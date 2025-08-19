@@ -17,31 +17,21 @@
 <% if (currentUser) {%>
     <div class="top-bar">
             <div class="empty"></div>
-            <h1><%= currentUser.fullname %>'s Files</h1>
+                <h1><%= currentUser.fullname %>'s Files</h1>
             <a class="log-out-file" href="/log-out">Log out</a>
     </div>
     <div class="file-page">
         <div class="folder-section">
-            <h2 class="folder-title">Your folders:</h2>
+            <div class="top-box">
+                <h2 class="folder-title">Files:</h2>
+                <button class="new-file-btn">Upload file</button>
+            </div>
             <div class="folder-box">
                 <div class="folders-list">
-                    <% folders.forEach((folder) => { %>
-                        <!-- now when you click it, it has a param you can use to look up info -->
-                        <a class="folder" href="/folder/<%= folder.id %>" >
-                            <img class="folder-icon" src="/images/folder.svg" alt="Stock image of a folder">
-                            <span class="folder-name"><%= folder.name %></span>
-                        </a> 
-                    <% }) %>
+                    <!-- files.foreach -->
                 </div>
             </div>
-        </div>
-        <div class="folder-page-options">
-            <div class="new-file-folder">
-                <button class="new-folder-btn">New folder</button>
-                <!-- move inside the folder -->
-                <button class="new-file-btn">New file</button>
-            </div>
-        </div>         
+        </div>        
     </div>
 <% } %>
   

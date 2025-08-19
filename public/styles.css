@@ -152,13 +152,8 @@ button:active {
     align-items: center;
     margin-top: 1%;
     margin-bottom: 1.5%;
-    margin-left: 10%;
-    margin-right: 10%;
-}
-
-.file-title {
-    display: flex;
-    align-self: center;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 .log-out-file {
@@ -166,20 +161,28 @@ button:active {
     font-size: 20px;
 }
 
-
 .file-page {
     display: flex;
     justify-content: space-between;
-    margin-left: 10%;
-    margin-right: 10%;
+
+}
+
+.folder-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin-right: 15%;
+    margin-left: 15%;
+    gap: 8px;
 }
 
 .folder-box {
     display: flex;
     flex-direction: column;
     border: 2px solid black;
-    height: 80vh;
-    width: 120vh;
+    height: 80vh; 
+    /* width: 140vh; */
     padding: 10px;
 }
 
@@ -198,6 +201,7 @@ button:active {
 .folder-icon {
     height: 90px;
     width: auto;
+    filter: invert(75%) sepia(15%) saturate(2796%) hue-rotate(168deg) brightness(99%) contrast(90%);
 }
 
 .folder-name {
@@ -223,12 +227,6 @@ button:active {
     gap: 5px;
 }
 
-.folder-contents {
-    border: 1px solid black;
-    width: 600px;
-    min-height: 400px; 
-}
-
 .folder-btn {
     border: 1px solid black;
     background-color: grey;
@@ -239,9 +237,10 @@ button:active {
     border-top-right-radius: 5px;
 }
 
-.new-file-folder {
+/* file page */
+
+.top-box {
     display: flex;
-    flex-direction: column;
-    margin-top: 10px;
+    justify-content: space-between;
 }
 
