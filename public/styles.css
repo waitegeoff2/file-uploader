@@ -21,18 +21,6 @@ body {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-.file-modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
 .modal-top {
     display: flex;
     justify-content: space-between;
@@ -46,27 +34,20 @@ body {
     width: 80%; 
 }
 
-.file-modal-content {
-   background-color: #fefefe;
-    margin: 15% auto; 
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;  
-}
-
-.file-close-btn {
+.close-btn {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.file-close-btn:hover,
-.file-close-btn:focus {
+.close-btn:hover,
+.close-btn:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
 }
+
 
 button {
   background-color: #C0C0C0;
@@ -78,7 +59,7 @@ button {
   text-align: center;
   cursor: pointer;
 
-  /* 3D effect for unpressed state */
+
   box-shadow: 
     inset -1px -1px #808080, 
     inset 1px 1px #FFFFFF,   
@@ -86,7 +67,7 @@ button {
 }
 
 button:active {
-  /* Reversed 3D effect for pressed state */
+  
   box-shadow: 
     inset -1px -1px #FFFFFF, 
     inset 1px 1px #808080,   
