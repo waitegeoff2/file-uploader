@@ -5,16 +5,18 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <div class="log-in-form">
-    <h2>Log in</h2>
-    <form class="log-in-form" action="/log-in" method="POST">
-        <label for="username">Username</label>
-        <input id="username" name="username" placeholder="Your email" type="text" />
-        <label for="password">Password</label>
-        <input id="password" name="password" type="password" />
-        <button type="submit">Log In</button>
-    </form>
-    <a href="/sign-up">Sign up.</a>
+  <div class="log-in-page">
+    <div class="log-in-form">
+        <h2>Log in</h2>
+        <form class="log-in-fields" action="/log-in" method="POST">
+            <label for="username">Username</label>
+            <input id="username" name="username" placeholder="Your email" type="text" />
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" />
+            <button class="log-in-btn" type="submit">Log In</button>
+        </form>
+        <a href="/">Not a member? Sign up.</a>
+    </div>
   </div>
 </body>
 </html>

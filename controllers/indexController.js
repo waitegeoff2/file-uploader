@@ -33,7 +33,7 @@ async(req, res, next) => {
     //display errors if any
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
-      return res.status(400).render("sign-up-form", {
+      return res.status(400).render("index", {
         errors: errors.array(),
       });
     }

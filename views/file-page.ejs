@@ -12,19 +12,23 @@
 <%- include("partials/add-file-modal.ejs") %>
 <% if (currentUser) {%>
     <div class="top-bar">
-            <h1><%= currentUser.fullname %>'s file uploader</h1>
-            <a href="/log-out">Log out</a>
+            <div class="empty"></div>
+            <h1><%= currentUser.fullname %>'s File Uploader</h1>
+            <a class="log-out-file" href="/log-out">Log out</a>
     </div>
-    <div class="file-option">
-        <div class="folder-overall">
-            <div class="folders-list">
-                <% folders.forEach((folder) => { %>
-                    <!-- now when you click it, it has a param you can use to look up info -->
-                    <a href="/folder/<%= folder.id %>" class="folder-btn"><%= folder.name %></a>
-                <% }) %>
-            </div>
-            <div class="folder-contents">
-                <h2>contents here</h2>
+    <div class="file-page">
+        <div class="folder-section">
+            <h2 class="folder-title">Your folders:</h2>
+            <div class="folder-box">
+                <div class="folders-list">
+                    <% folders.forEach((folder) => { %>
+                        <!-- now when you click it, it has a param you can use to look up info -->
+                        <a class="folder" href="/folder/<%= folder.id %>" >
+                            <img class="folder-icon" src="/images/folder.svg" alt="Stock image of a folder">
+                            <span class="folder-name"><%= folder.name %></span>
+                        </a> 
+                    <% }) %>
+                </div>
             </div>
         </div>
         <div class="folder-page-options">

@@ -6,9 +6,32 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-<h1>File Uploader</h1>
-<a href="/log-in">Login</a>
-<a href="/sign-up">Sign up</a>
-  
+<div class="index-page">
+    <h1 class="index-title">File Uploader.</h1>
+    <div class="sign-up-section">
+        <h2 class="sign-up-title">Sign Up</h2>
+        <%- include("partials/errors.ejs") %>
+        <form class="sign-up-form" action="/" method="POST">
+            <div class="form-section">
+                <label for="fullname">Full name</label>
+                <input id="fullname" name="fullname" placeholder="Full name" type="text" />
+            </div>
+            <div class="form-section">
+                <label for="username">Username (email)</label>
+                <input id="username" name="username" placeholder="username" type="email" />
+            </div>
+            <div class="form-section">
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" />
+            </div>
+            <div class="form-section">
+                <label for="confirmpassword">Confirm Password</label>
+                <input id="confirmpassword" name="confirmpassword" type="password" />
+            </div>
+            <button class="sign-submit" type="submit">Sign Up</button>
+        </form>
+        <a class="log-in-link" href="/log-in">Already a member? Login.</a>
+    </div>
+</div>
 </body>
 </html>

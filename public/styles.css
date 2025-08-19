@@ -40,10 +40,108 @@ body {
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 15% auto; 
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 80%; 
+}
+
+button {
+  background-color: #C0C0C0;
+  border: none;
+  padding: 5px 10px;
+  font-family: 'MS Sans Serif', sans-serif; 
+  font-size: 14px;
+  color: black;
+  text-align: center;
+  cursor: pointer;
+
+  /* 3D effect for unpressed state */
+  box-shadow: 
+    inset -1px -1px #808080, 
+    inset 1px 1px #FFFFFF,   
+    2px 2px #000000;         
+}
+
+button:active {
+  /* Reversed 3D effect for pressed state */
+  box-shadow: 
+    inset -1px -1px #FFFFFF, 
+    inset 1px 1px #808080,   
+    2px 2px #000000;         
+}
+
+
+/* index page */
+
+.index-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.index-title {
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 20px;
+}
+
+.sign-up-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sign-up-form {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+.sign-up-title {
+    align-self: center;
+}
+
+.sign-submit {
+    align-self: center;
+    margin-top: 3px;
+}
+
+.error-msg {
+    color: red;
+}
+
+.log-in-link {
+    align-self: center;
+}
+
+/* login page */
+
+.log-in-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px; 
+}
+
+.log-in-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.log-in-fields {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+.log-in-btn {
+    align-self: center;
+    margin-top: 3px;
 }
 
 /* file page */
@@ -52,17 +150,58 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 1%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
-.file-option {
+.file-title {
+    display: flex;
+    align-self: center;
+}
+
+.log-out-file {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+.file-page {
     display: flex;
     justify-content: space-between;
-    
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
-.folder-overall {
+.folder-box {
     display: flex;
     flex-direction: column;
+    border: 1px solid black;
+    height: 80vh;
+    width: 120vh;
+    padding: 10px;
+}
+
+.folders-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.folder {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    align-items: center;
+}
+
+.folder-icon {
+    height: 90px;
+    width: auto;
+}
+
+.folder-name {
+    display: flex;
+    align-self: center;
 }
 
 .file-uploader-form {

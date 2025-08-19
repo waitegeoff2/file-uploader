@@ -3,12 +3,9 @@ const indexRouter = Router();
 const indexController = require("../controllers/indexController")
 const passport = require("passport");
 
-//home page
+//home page (sign up page)
 indexRouter.get('/', (req, res) => res.render('index'))
-
-//sign up form
-indexRouter.get('/sign-up', (req, res) => res.render('sign-up-form'))
-indexRouter.post('/sign-up', indexController.addUser)
+indexRouter.post('/', indexController.addUser)
 
 //log in
 indexRouter.get('/log-in', (req, res) => res.render('log-in-form'))
