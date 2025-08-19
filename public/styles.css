@@ -46,6 +46,14 @@ body {
     width: 80%; 
 }
 
+.file-modal-content {
+   background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;  
+}
+
 button {
   background-color: #C0C0C0;
   border: none;

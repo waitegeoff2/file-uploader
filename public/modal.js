@@ -26,8 +26,6 @@ fileClose.onclick = function() {
 window.onclick = function(event) {
     if (event.target == (modal)) {
         modal.style.display = "none"
-    } else if (event.target == fileModal) {
-        fileModal.style.display = 'none'
     }
 }
 

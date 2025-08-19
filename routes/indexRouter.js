@@ -35,7 +35,6 @@ indexRouter.get('/file-page', indexController.renderFilePage)
 //create folder 
 //take user to new folder form, make a new form and tie it to that user's id
 indexRouter.post('/folder', indexController.addFolder)
-//THEN display it in the index (map same as messages)
 
 //show folder details
 indexRouter.get('/folder/:folderId', indexController.expandFolder)
