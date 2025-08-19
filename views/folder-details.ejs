@@ -29,7 +29,7 @@
                 <div class="folders-list">
                     <% returnedFiles.files.forEach((file) => { %>
                         <!-- now when you click it, it has a param you can use to look up info -->
-                        <a class="folder" href="/folder/<%= file.id %>" >
+                        <a class="folder" href="/folder/file/<%= file.id %>" >
                             <img class="file-icon" src="/images/file.svg" alt="Stock image of a folder">
                             <span class="folder-name"><%= file.name %></span>
                         </a> 

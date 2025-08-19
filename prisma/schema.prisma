@@ -39,7 +39,10 @@ model File {
   //ADD A USER RELATION IN HERE?? EACH FILE BELONGS TO A USER
 
   name        String
+  type        String
   fileSize    Int
+  path        String
+  // PATH AND ANYTHING ELSE YOU NEED TO DOWNLOAD (check)
   uploadTime  DateTime  @default(now()) 
 }
 
