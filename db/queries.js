@@ -46,9 +46,36 @@ async function addFolder(folderName, user) {
     })
 }
 
+async function addFile(folderId, name, size) {
+    await prisma.file.create({
+        data: {
+            folderId: folderId,
+            name: name,
+            size: size
+        }
+    })
+}
+
+async function findFiles(folderId) {
+    const files = await prisma.folder.findMany({
+        where: {
+            id: folderId,
+            files: {
+                name: true,
+                fileSize: true,
+                uploadTime: true
+            }
+        }
+    })
+
+    return files;
+}
+
 module.exports = {
     addUser,
     findFolders,
     addDefaultFolder,
-    addFolder
+    addFolder,
+    addFile,
+    findFiles
 }

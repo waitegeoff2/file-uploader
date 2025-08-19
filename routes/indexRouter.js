@@ -2,6 +2,9 @@ const { Router } = require("express");
 const indexRouter = Router();
 const indexController = require("../controllers/indexController")
 const passport = require("passport");
+//multer
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
 
 //home page (sign up page)
 indexRouter.get('/', (req, res) => res.render('index'))
@@ -37,8 +40,24 @@ indexRouter.post('/folder', indexController.addFolder)
 //show folder details
 indexRouter.get('/folder/:folderId', indexController.expandFolder)
 
+//upload file
+indexRouter.post('/upload', upload.single('file'), async (req,res) => {
+    console.log(req.file);
+    const name = req.file.fieldname;
+    const type = req.file.mimetype;
+    const filename = req.file.filename;
+    const size = req.file.size;
+    const path = req.file.path;
+    //add to db
+    await db.addFile()
+    res.send(req.file);
+})
+
+//add file
+// indexRouter.post('/upload', indexController.addFile)
+
 //delete folder
-//indexRouter.get('/folder/:folderId', indexController.deleteFolder)
+//indexRouter.get('/folder/delete/:folderId', indexController.deleteFolder)
 
 //OR
 //go to param URL with user's id for new form (maybe won't work with multiple)

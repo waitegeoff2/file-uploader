@@ -151,6 +151,7 @@ button:active {
     justify-content: space-between;
     align-items: center;
     margin-top: 1%;
+    margin-bottom: 1.5%;
     margin-left: 10%;
     margin-right: 10%;
 }
@@ -176,7 +177,7 @@ button:active {
 .folder-box {
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    border: 2px solid black;
     height: 80vh;
     width: 120vh;
     padding: 10px;
