@@ -46,13 +46,14 @@ async function addFolder(folderName, user) {
     })
 }
 
-async function addFile(folderId, name, size, path) {
+async function addFile(folderId, name, size, path, type) {
     await prisma.file.create({
         data: {
             folderId: folderId,
             name: name,
-            size: size,
-            path: path,
+            fileSize: size,
+            filepath: path,
+            filetype: type
             
         }
     })
