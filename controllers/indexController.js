@@ -93,8 +93,8 @@ async function addFile (req, res) {
         return res.status(400).send('No file uploaded.');
     }
 
-    console.trace(req.file);
-    console.trace(req.body.folderid);
+    console.log(req.file);
+    console.log(req.body.folderid);
     // file details
     const id = parseInt(req.body.folderid);
     const name = req.file.originalname;
