@@ -88,6 +88,24 @@ async function deleteFolder(folderId) {
     })
 }
 
+async function getFile(fileId) {
+    const file = await prisma.file.findFirst({
+        where: {
+            id: fileId
+        },
+        select: {
+            id: true,
+            name: true,
+            filepath: true,
+            filetype: true,
+            fileSize: true,
+            uploadTime: true,
+        }
+    })
+
+    return file;
+}
+
 module.exports = {
     addUser,
     findFolders,
@@ -95,5 +113,6 @@ module.exports = {
     addFolder,
     addFile,
     findFiles,
-    deleteFolder
+    deleteFolder,
+    getFile
 }

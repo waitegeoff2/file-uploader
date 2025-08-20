@@ -1,6 +1,7 @@
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const db = require('../db/queries')
+const supabase = require('../config/supabase')
 
 const emptyErr = "is required"
 const lengthErr = "must be between 1 and 50 characters."
@@ -88,6 +89,10 @@ async function expandFolder(req, res) {
 }
 
 async function addFile (req, res) {
+    if(!req.file) {
+        return res.status(400).send('No file uploaded.');
+    }
+
     console.trace(req.file);
     console.trace(req.body.folderid);
     const id = parseInt(req.body.folderid);
@@ -110,7 +115,13 @@ async function deleteFolder(req, res) {
         console.log(folderId)
         await db.deleteFolder(folderId);
         res.redirect('/file-page')
-    
+}
+
+async function downloadFile(req, res) {
+    const fileId = parseInt(req.params.fileId);
+    const file = await db.getFile(fileId)
+    console.trace(file)
+    res.download(file.filepath);
 }
 
 module.exports = {
@@ -119,5 +130,6 @@ module.exports = {
     addFolder, 
     addFile,
     expandFolder, 
-    deleteFolder
+    deleteFolder,
+    downloadFile
 }

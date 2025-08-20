@@ -38,7 +38,7 @@ app.use(express.urlencoded({ extended: true }));
 const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
 
-//session/passport
+//store sessions using prisma
 app.use(
   session({
      cookie: {
@@ -73,6 +73,17 @@ app.use((req, res, next) => {
 
 //router
 app.use("/", indexRouter);
+
+//(err, req, res, next). Express recognizes this signature as an error-handling middleware. 
+// These middleware functions should be placed at the end 
+// of your middleware stack, after all other app.use() and route definitions.
+app.use((err, req, res, next) => {
+  console.error(err.stack); // Log the error for debugging
+  res.status(err.statusCode || 500).json({
+    message: err.message || 'Something went wrong!',
+    status: err.statusCode || 500
+  });
+});
 
 
 const PORT = 3000;

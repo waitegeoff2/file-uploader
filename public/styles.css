@@ -86,7 +86,7 @@ button:active {
 }
 
 .index-title {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin-bottom: 20px;
 }
 
@@ -94,6 +94,9 @@ button:active {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 8px;
 }
 
 .sign-up-form {

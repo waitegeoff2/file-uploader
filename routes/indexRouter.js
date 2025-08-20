@@ -46,7 +46,7 @@ indexRouter.post('/upload', upload.single('file'), indexController.addFile)
 indexRouter.get('/delete/:folderId', indexController.deleteFolder)
 
 //download file
-//indexRouter.get('/folder/file/:fileId', indexController.downloadFile)
+indexRouter.get('/folder/file/:fileId', indexController.downloadFile)
 
 
 module.exports = indexRouter;
