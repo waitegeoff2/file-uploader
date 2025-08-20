@@ -95,17 +95,37 @@ async function addFile (req, res) {
 
     console.trace(req.file);
     console.trace(req.body.folderid);
+    // file details
     const id = parseInt(req.body.folderid);
     const name = req.file.originalname;
+    //buffer allows you to access the file
+    const buffer = req.file.buffer;
     const type = req.file.mimetype;
     const filename = req.file.filename;
     const size = req.file.size;
-    const path = req.file.path;
+    const path = `/${name}`
+
+    const bucketName = 'file-uploader-2';
+
+    try {
+    const { data, error } = await supabase.storage
+      .from(bucketName)
+      .upload(path, buffer, { contentType: req.file.mimetype });
+
+    if (error) {
+      throw error;
+    }
+    res.send('file uploaded')
+    } catch (error) {
+        console.error('Error during file upload process:', error);
+        res.status(500).send('An error occurred.');
+    }
+
     //add to db
-    await db.addFile(id, name, size, path, type)
+    // await db.addFile(id, name, size, path, type)
 
     // //redirect to the FOLDER PAGE
-    res.redirect(`folder/${id}`)
+    // res.redirect(`folder/${id}`)
     //FIX FILE NAMES ON PAGE
 }
 

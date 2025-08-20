@@ -2,9 +2,11 @@ const { Router } = require("express");
 const indexRouter = Router();
 const indexController = require("../controllers/indexController")
 const passport = require("passport");
+const supabase = require('../config/supabase')
 //multer
 const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 //home page (sign up page)
 indexRouter.get('/', (req, res) => res.render('index'))
