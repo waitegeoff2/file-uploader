@@ -147,7 +147,7 @@ button:active {
     margin-top: 3px;
 }
 
-/* file page */
+/* folder page */
 
 .top-bar {
     display: flex;
@@ -255,5 +255,15 @@ button:active {
 .file-icon {
     height: 90px;
     width: auto;
+}
+
+.delete-folder {
+    background-color: rgb(255, 72, 72);
+    padding: 3px;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
 }
 

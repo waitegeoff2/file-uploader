@@ -80,6 +80,10 @@ async function findFiles(folderId) {
     return files;
 }
 
+async function deleteFolder(folderId) {
+    
+}
+
 module.exports = {
     addUser,
     findFolders,

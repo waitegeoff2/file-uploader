@@ -23,7 +23,10 @@
         <div class="folder-section">
             <div class="top-box">
                 <h2 class="folder-title">Files:</h2>
-                <button class="new-folder-btn">Upload file</button>
+                <div class="folder-options">
+                    <button class="new-folder-btn">Upload file</button>
+                    <a href="/delete/<%= folderId %>" class="delete-folder">Delete this folder</a>
+                </div>
             </div>
             <div class="folder-box">
                 <div class="folders-list">

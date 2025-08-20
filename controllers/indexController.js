@@ -100,8 +100,14 @@ async function addFile (req, res) {
     await db.addFile(id, name, size, path, type)
 
     // //redirect to the FOLDER PAGE
-    // res.redirect('folder/${FOLDERID}')
+    res.redirect(`folder/${id}`)
     //FIX FILE NAMES ON PAGE
+}
+
+async function deleteFolder(req, res) {
+    const folderId = parseInt(req.params);
+    console.log(folderId + typeOf(folderId))
+    //await db.deleteFolder;
 }
 
 module.exports = {
@@ -109,5 +115,6 @@ module.exports = {
     renderFilePage,
     addFolder, 
     addFile,
-    expandFolder
+    expandFolder, 
+    deleteFolder
 }
