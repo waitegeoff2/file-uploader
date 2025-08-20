@@ -91,7 +91,7 @@ async function addFile (req, res) {
     console.trace(req.file);
     console.trace(req.body.folderid);
     const id = parseInt(req.body.folderid);
-    const name = req.file.fieldname;
+    const name = req.file.originalname;
     const type = req.file.mimetype;
     const filename = req.file.filename;
     const size = req.file.size;
@@ -105,9 +105,12 @@ async function addFile (req, res) {
 }
 
 async function deleteFolder(req, res) {
-    const folderId = parseInt(req.params);
-    console.log(folderId + typeOf(folderId))
-    //await db.deleteFolder;
+    
+        const folderId = parseInt(req.params.folderId);
+        console.log(folderId)
+        await db.deleteFolder(folderId);
+        res.redirect('/file-page')
+    
 }
 
 module.exports = {

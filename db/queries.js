@@ -81,7 +81,11 @@ async function findFiles(folderId) {
 }
 
 async function deleteFolder(folderId) {
-    
+    await prisma.folder.delete({
+        where: {
+            id: folderId,
+        }
+    })
 }
 
 module.exports = {
@@ -90,5 +94,6 @@ module.exports = {
     addDefaultFolder,
     addFolder,
     addFile,
-    findFiles
+    findFiles,
+    deleteFolder
 }

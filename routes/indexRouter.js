@@ -41,16 +41,12 @@ indexRouter.get('/folder/:folderId', indexController.expandFolder)
 
 //upload file
 indexRouter.post('/upload', upload.single('file'), indexController.addFile) 
-//add file
-// indexRouter.post('/upload', indexController.addFile)
 
 //delete folder
-//indexRouter.get('/folder/delete/:folderId', indexController.deleteFolder)
+indexRouter.get('/delete/:folderId', indexController.deleteFolder)
 
-//OR
-//go to param URL with user's id for new form (maybe won't work with multiple)
-//indexRouter.get('folder/:folderId', indexController.addFolder)
-//that folder id is the USER ID and can add a folder to that guy's id
+//download file
+//indexRouter.get('/folder/file/:fileId', indexController.downloadFile)
 
 
 module.exports = indexRouter;

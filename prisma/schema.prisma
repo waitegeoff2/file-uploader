@@ -24,7 +24,7 @@ model User {
 
 model Folder {
   id        Int      @id @default(autoincrement())
-  user  User @relation(fields: [userId], references: [id])
+  user  User @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId Int
 
   name String
@@ -33,7 +33,7 @@ model Folder {
 
 model File {
   id          Int       @id @default(autoincrement())
-  folder      Folder    @relation(fields: [folderId], references: [id])
+  folder      Folder    @relation(fields: [folderId], references: [id], onDelete: Cascade)
   folderId    Int
 
   //ADD A USER RELATION IN HERE?? EACH FILE BELONGS TO A USER
