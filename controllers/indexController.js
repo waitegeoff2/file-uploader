@@ -50,7 +50,7 @@ async(req, res, next) => {
 
         await db.addDefaultFolder();
 
-        res.redirect('/');
+        res.redirect('/log-in');
     } catch(error){
         console.error(error);
         next(error);
