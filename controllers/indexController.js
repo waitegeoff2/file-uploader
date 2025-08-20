@@ -103,14 +103,14 @@ async function addFile (req, res) {
     const type = req.file.mimetype;
     const filename = req.file.filename;
     const size = req.file.size;
-    const path = `/${name}`
+    const path = `${name}`
 
     const bucketName = 'file-uploader-2';
 
     try {
     const { data, error } = await supabase.storage
       .from(bucketName)
-      .upload(path, buffer, { contentType: req.file.mimetype });
+      .upload(path, buffer);
 
     if (error) {
       throw error;
@@ -121,10 +121,10 @@ async function addFile (req, res) {
         res.status(500).send('An error occurred.');
     }
 
-    //add to db
-    // await db.addFile(id, name, size, path, type)
+    //GET THE URL FROM SUPABASE
+    // await db.addFile(id, name, size, path, type, ADD URL(to db too))
 
-    // //redirect to the FOLDER PAGE
+    
     // res.redirect(`folder/${id}`)
     //FIX FILE NAMES ON PAGE
 }
