@@ -66,8 +66,6 @@ async function renderFilePage(req, res) {
     console.log(current)
     const folders = await db.findFolders(current)
 
-    console.trace(folders)
-
     res.render("file-page", {folders: folders})
 }
 
@@ -110,21 +108,15 @@ async function addFile (req, res) {
         return res.status(400).send('No file uploaded.');
     }
 
-    console.log(req.user);
-    console.log(req.file);
-    console.log(req.body.folderid);
     // file details
     const id = parseInt(req.body.folderid);
     //this gets rid of characters that don't work in URLs
-    console.log(req.file.originalname)
     const name = createUrlFriendlyFilename(req.file.originalname)
-    console.log(name)
     //buffer allows you to access the file
     const buffer = req.file.buffer;
     const type = req.file.mimetype;
     const size = req.file.size;
     const path = `${Date.now()}-${name}`
-    console.log(path)
 
     const bucketName = 'file-uploader-2';
 
