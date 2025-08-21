@@ -163,6 +163,7 @@ async function deleteFolder(req, res) {
 }
 
 async function downloadFile(req, res) {
+    // PROBABLY A BETTER WAY TO DO THIS
     const fileId = parseInt(req.params.fileId);
 
     const file = await db.getFile(fileId)
