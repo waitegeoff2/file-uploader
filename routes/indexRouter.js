@@ -5,6 +5,7 @@ const passport = require("passport");
 const supabase = require('../config/supabase')
 //multer
 const multer  = require('multer')
+//multer and supabase storage settings
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 

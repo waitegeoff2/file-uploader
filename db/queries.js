@@ -50,14 +50,15 @@ async function addFolder(folderName, user) {
     }   
 }
 
-async function addFile(folderId, name, size, path, type) {
+async function addFile(folderId, name, size, path, type, url) {
     await prisma.file.create({
         data: {
             folderId: folderId,
             name: name,
             fileSize: size,
             filepath: path,
-            filetype: type
+            filetype: type,
+            supabaseurl: url
             
         }
     })
@@ -104,6 +105,7 @@ async function getFile(fileId) {
             filetype: true,
             fileSize: true,
             uploadTime: true,
+            supabaseurl: true,
         }
     })
 

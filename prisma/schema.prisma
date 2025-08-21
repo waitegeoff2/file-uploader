@@ -42,7 +42,7 @@ model File {
   filetype    String
   fileSize    Int
   filepath    String
-  //supabaseurl  String
+  supabaseurl  String?
   // PATH AND ANYTHING ELSE YOU NEED TO DOWNLOAD (check)
   uploadTime  DateTime  @default(now()) 
 }

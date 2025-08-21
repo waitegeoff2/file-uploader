@@ -1,7 +1,8 @@
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const db = require('../db/queries')
-const supabase = require('../config/supabase')
+const supabase = require('../config/supabase');
+const { name } = require("ejs");
 
 const emptyErr = "is required"
 const lengthErr = "must be between 1 and 50 characters."
@@ -88,27 +89,27 @@ async function expandFolder(req, res) {
     res.render('folder-details', { returnedFiles: returnedFiles, folderId: folderId })
 }
 
-function removeAllSpaces(str) {
-  return str.replace(/\s/g, '');
-}
-
 async function addFile (req, res) {
     if(!req.file) {
         return res.status(400).send('No file uploaded.');
     }
 
+    console.log(req.user);
     console.log(req.file);
     console.log(req.body.folderid);
     // file details
     const id = parseInt(req.body.folderid);
-    const name = encodeURIComponent(req.file.originalname);
-    console.log(name)
+    //this gets rid of characters that don't work in URLs
+    const uriName = encodeURIComponent(req.file.originalname);
+    console.log(uriName)
     //buffer allows you to access the file
     const buffer = req.file.buffer;
     const type = req.file.mimetype;
+    const originalname = req.file.originalname;
     const filename = req.file.filename;
     const size = req.file.size;
-    const path = `${name}`
+    const path = `${Date.now()}-${size}`
+    console.log(path)
 
     const bucketName = 'file-uploader-2';
 
@@ -120,23 +121,22 @@ async function addFile (req, res) {
     if (error) {
       throw error;
     }
-    res.send('file uploaded')
     } catch (error) {
         console.error('Error during file upload process:', error);
         res.status(500).send('An error occurred.');
     }
 
-    // const publicURL 
+    //retrieve supabase url
+    const publicUrl = supabase.storage.from(bucketName).getPublicUrl(path).data.publicUrl;
 
-    //FIRST THING (do this and figure out the downloads)
-    //GET THE URL FROM SUPABASE
-    //        const supabaseUrl = `${process.env.SUPABASE_URL}/storage/v1/object/public/user-files-storify/${uploadPath}`;
-
-    // await db.addFile(id, name, size, path, type, ADD URL(to db too))
-
+    //add to database
+    try {
+        await db.addFile(id, originalname, size, path, type, publicUrl)
+    } catch(err) {
+        console.error("Failed to upload: ", err);
+    }
     
-    // res.redirect(`folder/${id}`)
-    //FIX FILE NAMES ON PAGE
+    res.redirect(`folder/${id}`);
 }
 
 async function deleteFolder(req, res) {
@@ -150,8 +150,17 @@ async function deleteFolder(req, res) {
 async function downloadFile(req, res) {
     const fileId = parseInt(req.params.fileId);
     const file = await db.getFile(fileId)
-    console.trace(file)
-    res.download(file.filepath);
+    const bucketName = 'file-uploader-2';
+    
+    const { data, error } = await supabase
+    .storage
+    .from(bucketName)
+    .download(file.filepath);
+
+  if (error) {
+    console.error('Error downloading file:', error.message);
+    return null;
+  }
 }
 
 module.exports = {
