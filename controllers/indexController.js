@@ -88,6 +88,10 @@ async function expandFolder(req, res) {
     res.render('folder-details', { returnedFiles: returnedFiles, folderId: folderId })
 }
 
+function removeAllSpaces(str) {
+  return str.replace(/\s/g, '');
+}
+
 async function addFile (req, res) {
     if(!req.file) {
         return res.status(400).send('No file uploaded.');
@@ -97,7 +101,8 @@ async function addFile (req, res) {
     console.log(req.body.folderid);
     // file details
     const id = parseInt(req.body.folderid);
-    const name = req.file.originalname;
+    const name = encodeURIComponent(req.file.originalname);
+    console.log(name)
     //buffer allows you to access the file
     const buffer = req.file.buffer;
     const type = req.file.mimetype;
@@ -121,8 +126,12 @@ async function addFile (req, res) {
         res.status(500).send('An error occurred.');
     }
 
+    // const publicURL 
+
     //FIRST THING (do this and figure out the downloads)
     //GET THE URL FROM SUPABASE
+    //        const supabaseUrl = `${process.env.SUPABASE_URL}/storage/v1/object/public/user-files-storify/${uploadPath}`;
+
     // await db.addFile(id, name, size, path, type, ADD URL(to db too))
 
     
