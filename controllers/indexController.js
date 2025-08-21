@@ -89,6 +89,22 @@ async function expandFolder(req, res) {
     res.render('folder-details', { returnedFiles: returnedFiles, folderId: folderId })
 }
 
+function createUrlFriendlyFilename(filename) {
+  // 1. Remove leading/trailing whitespace
+  let urlFriendly = filename.trim();
+
+  // 2. Replace spaces with hyphens
+  urlFriendly = urlFriendly.replace(/\s+/g, '-');
+
+  // 3. Convert to lowercase
+  urlFriendly = urlFriendly.toLowerCase();
+
+  // 4. Remove invalid characters (keep alphanumeric and hyphens)
+  urlFriendly = urlFriendly.replace(/[^a-z0-9-]/g, '');
+
+  return urlFriendly;
+}
+
 async function addFile (req, res) {
     if(!req.file) {
         return res.status(400).send('No file uploaded.');
@@ -100,15 +116,14 @@ async function addFile (req, res) {
     // file details
     const id = parseInt(req.body.folderid);
     //this gets rid of characters that don't work in URLs
-    const uriName = encodeURIComponent(req.file.originalname);
-    console.log(uriName)
+    console.log(req.file.originalname)
+    const name = createUrlFriendlyFilename(req.file.originalname)
+    console.log(name)
     //buffer allows you to access the file
     const buffer = req.file.buffer;
     const type = req.file.mimetype;
-    const originalname = req.file.originalname;
-    const filename = req.file.filename;
     const size = req.file.size;
-    const path = `${Date.now()}-${size}`
+    const path = `${Date.now()}-${name}`
     console.log(path)
 
     const bucketName = 'file-uploader-2';
@@ -116,7 +131,7 @@ async function addFile (req, res) {
     try {
     const { data, error } = await supabase.storage
       .from(bucketName)
-      .upload(path, buffer);
+      .upload(path, buffer, { contentType: type });
 
     if (error) {
       throw error;
@@ -131,7 +146,7 @@ async function addFile (req, res) {
 
     //add to database
     try {
-        await db.addFile(id, originalname, size, path, type, publicUrl)
+        await db.addFile(id, name, size, path, type, publicUrl)
     } catch(err) {
         console.error("Failed to upload: ", err);
     }
@@ -149,18 +164,22 @@ async function deleteFolder(req, res) {
 
 async function downloadFile(req, res) {
     const fileId = parseInt(req.params.fileId);
+
     const file = await db.getFile(fileId)
+    console.log(file.filepath)
     const bucketName = 'file-uploader-2';
     
     const { data, error } = await supabase
     .storage
     .from(bucketName)
-    .download(file.filepath);
+    .getPublicUrl(file.filepath, { download: true }) // Add { download: true } to trigger download
 
   if (error) {
     console.error('Error downloading file:', error.message);
     return null;
   }
+
+
 }
 
 module.exports = {
