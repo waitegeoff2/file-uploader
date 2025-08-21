@@ -12,25 +12,6 @@ const db = require('./db/queries')
 const { PrismaSessionStore } = require('@quixo3/prisma-session-store');
 const prisma = require('./db/prisma')
 
-//multer
-const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
-
-// //multer middleware for single upload
-// ///:folderId/upload
-// app.post('/upload', upload.single('file'), async (req,res) => {
-//     console.log(req.file);
-//     const name = req.file.fieldname;
-//     const type = req.file.mimetype;
-//     const filename = req.size.filename;
-//     const size = req.file.size;
-//     const path = req.file.path;
-//     //add to db
-//     await db.addFile()
-//     res.send(req.file);
-// })
-
-
 //this allows the app to parse form data into req.
 app.use(express.urlencoded({ extended: true }));
 

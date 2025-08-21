@@ -83,7 +83,6 @@ async function expandFolder(req, res) {
     const files = await db.findFiles(folderId)
     const returnedFiles = files[0];
     
-    //add a DELETE BUTTON WITH THAT ID
     res.render('folder-details', { returnedFiles: returnedFiles, folderId: folderId })
 }
 
@@ -109,6 +108,7 @@ async function addFile (req, res) {
     }
 
     // file details
+    console.log(req.file)
     const id = parseInt(req.body.folderid);
     //this gets rid of characters that don't work in URLs
     const name = createUrlFriendlyFilename(req.file.originalname)
