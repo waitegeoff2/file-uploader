@@ -37,13 +37,17 @@ async function addDefaultFolder() {
     console.trace(userId.id)
 }
 
-async function addFolder(folderName, user) {
+async function addFolder(folderName, user) { 
+    try {    
     await prisma.folder.create({
         data: {
             userId: user,
             name: folderName
         }
     })
+    } catch(err) {
+        console.error("Failed to create folder: ", err);
+    }   
 }
 
 async function addFile(folderId, name, size, path, type) {

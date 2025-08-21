@@ -121,6 +121,7 @@ async function addFile (req, res) {
         res.status(500).send('An error occurred.');
     }
 
+    //FIRST THING (do this and figure out the downloads)
     //GET THE URL FROM SUPABASE
     // await db.addFile(id, name, size, path, type, ADD URL(to db too))
 
