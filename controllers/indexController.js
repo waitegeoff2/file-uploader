@@ -168,17 +168,11 @@ async function downloadFile(req, res) {
     const file = await db.getFile(fileId)
     console.log(file.filepath)
     const bucketName = 'file-uploader-2';
-    
-    const { data, error } = await supabase
-    .storage
-    .from(bucketName)
-    .getPublicUrl(file.filepath, { download: true }) // Add { download: true } to trigger download
 
-  if (error) {
-    console.error('Error downloading file:', error.message);
-    return null;
-  }
+    const publicUrl = supabase.storage.from(bucketName).getPublicUrl(file.filepath).data.publicUrl;
+    console.log(publicUrl)
 
+    res.redirect(publicUrl)
 
 }
 
