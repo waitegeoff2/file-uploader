@@ -30,16 +30,16 @@ body {
     background-color: #fefefe;
     margin: 15% auto; 
     padding: 20px;
-    width: 20%;
     border: 1px solid #888;
-    width: 80%; 
+    width: 20%; 
 }
 
 .close-btn {
     color: #aaa;
     float: right;
-    font-size: 28px;
+    font-size: 12px;
     font-weight: bold;
+    color: black;
 }
 
 .close-btn:hover,
@@ -73,6 +73,17 @@ button:active {
     inset -1px -1px #FFFFFF, 
     inset 1px 1px #808080,   
     2px 2px #000000;         
+}
+
+.file-uploader-form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.upload-btn {
+    width: 100px;
+    padding: 10px;
 }
 
 
